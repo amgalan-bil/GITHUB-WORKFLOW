@@ -1,0 +1,22 @@
+name: CI Practice
+
+on: [push]
+
+jobs:
+  lint-client:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Instll Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run Linter
+        run: bun run lint
